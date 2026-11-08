@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f2efe6">
+  <meta name="format-detection" content="telephone=no">
+  <title>测测你的 AI 使用人格</title>
+  <meta name="description" content="20 道生活题，测你和 AI 的真实关系：工具、同事、树洞，还是许愿池？">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="测测你的 AI 使用人格">
+  <meta property="og:description" content="20 道生活题，测你和 AI 的真实关系：工具、同事、树洞，还是许愿池？">
+  <meta property="og:image" content="https://reus1012.github.io/ai-persona-test/cover.png">
+  <meta property="og:url" content="https://reus1012.github.io/ai-persona-test/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111411'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23d95b3f'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23f2efe6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main id="app">
+    <!-- COVER -->
+    <section class="screen active" id="cover">
+      <div class="cover-top">
+        <span class="mono">AI PERSONA / 20 QUESTIONS</span>
+        <span class="mono">v1.0</span>
+      </div>
+
+      <div class="cover-main">
+        <p class="eyebrow">A SMALL TEST ABOUT YOUR DIGITAL RELATIONSHIP</p>
+        <h1>测测你的<br><em>AI 使用人格</em></h1>
+        <p class="hook">你手机里最懂你的，<br>可能不是人。</p>
+
+        <div class="terminal" aria-hidden="true">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>chat.log</span></div>
+          <div class="terminal-body">
+            <p><span class="prompt">&gt;</span> 你每天打开我几次？</p>
+            <p><span class="prompt">&gt;</span> 你是把我当工具，还是当同事？</p>
+            <p class="cursor-line"><span class="prompt">&gt;</span> <span class="cursor"></span></p>
+          </div>
+        </div>
+
+        <button class="primary" id="startBtn">开始测试 <span>→</span></button>
+        <p class="fineprint">没有标准答案 · 约 2 分钟 · 娱乐测试，不构成心理诊断</p>
+      </div>
+
+      <div class="cover-bottom">
+        <span>20 QUESTIONS</span>
+        <span>8 PERSONAS</span>
+        <span>1 RELATIONSHIP</span>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="screen" id="quiz">
+      <header class="quiz-head">
+        <button class="back-btn" id="backBtn" aria-label="上一题">←</button>
+        <div class="mono" id="progressText">01 / 20</div>
+      </header>
+      <div class="progress"><i id="progressBar"></i></div>
+
+      <div class="quiz-main">
+        <p class="q-label" id="qLabel">01 · 早晨</p>
+        <h2 id="question">问题</h2>
+        <div class="options" id="options"></div>
+        <p class="hint">选第一反应，不要选“应该”的。</p>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section class="screen" id="result">
+      <div class="result-top">
+        <span class="mono">YOUR AI PERSONA</span>
+        <button class="ghost-btn" id="shareBtn">分享 ↗</button>
+      </div>
+
+      <div class="result-main">
+        <p class="result-index" id="resultIndex">01 / 08</p>
+        <h1 id="resultName">AI 许愿池</h1>
+        <p class="result-tagline" id="resultTagline">问就完了，灵不灵看缘分</p>
+
+        <div class="chat-card">
+          <div class="chat-head"><span class="pulse"></span> AI 眼中的你</div>
+          <p id="resultEyes"></p>
+        </div>
+
+        <div class="result-desc" id="resultDesc"></div>
+
+        <h3 class="section-title">你的 AI 使用说明书</h3>
+        <div class="manual" id="manual"></div>
+
+        <div class="pair-grid">
+          <div class="pair-card good">
+            <span class="pair-label">BEST MATCH</span>
+            <strong id="bestName"></strong>
+            <p id="bestReason"></p>
+          </div>
+          <div class="pair-card bad">
+            <span class="pair-label">WORST MATCH</span>
+            <strong id="worstName"></strong>
+            <p id="worstReason"></p>
+          </div>
+        </div>
+
+        <div class="shadow" id="shadowBox" hidden>
+          <span class="mono">SHADOW PERSONA</span>
+          <p id="shadowText"></p>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="downloadBtn">生成分享图</button>
+          <button class="outline" id="copyBtn">复制分享文案</button>
+          <div class="text-actions">
+            <button class="text-btn" id="galleryBtn">查看全部 8 种人格 →</button>
+            <button class="text-btn" id="againBtn">再测一次</button>
+          </div>
+        </div>
+
+        <p class="fineprint">这只是你和 AI 的关系速写，不是心理诊断。结果没有好坏，只有你今天怎么用它。</p>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="screen" id="gallery">
+      <div class="result-top">
+        <span class="mono">THE EIGHT PERSONAS</span>
+        <button class="ghost-btn" id="galleryBack">返回结果 ←</button>
+      </div>
+      <div class="gallery-main">
+        <h2>八种 AI 使用人格</h2>
+        <p class="gallery-sub">没有高低，只有你和 AI 的距离。</p>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="share-modal" id="shareModal" hidden>
+    <div class="share-sheet" role="dialog" aria-modal="true" aria-label="分享卡">
+      <div class="share-head">
+        <div>
+          <span class="mono">SHARE CARD</span>
+          <h3 id="shareTitle">长按图片保存</h3>
+        </div>
+        <button class="share-close" id="closeShareBtn" aria-label="关闭">×</button>
+      </div>
+      <img id="shareImage" alt="AI 使用人格分享卡">
+      <p class="share-tip" id="shareTip">在微信里长按图片 → 保存图片，再发给朋友或发朋友圈。</p>
+      <div class="share-actions">
+        <button class="outline" id="saveCardBtn">下载 PNG</button>
+        <button class="primary" id="shareCopyBtn">复制分享文案</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <canvas id="shareCanvas" width="1080" height="1440" hidden></canvas>
+  <script src="app.js"></script>
+</body>
+</html>
